@@ -8,9 +8,19 @@
 			"ConstraintDescription": "Provide a name for the repo."
 		},
 		"RepoDescription": {
-			"Description": "A description for the repo",
+			"Description": "A description for the repo.",
 			"Type": "String",
-			"ConstraintDescription": "Provide a description for the repo"
+			"ConstraintDescription": "Provide a description for the repo."
+		},
+		"BucketName": {
+			"Description": "Name of the bucket",
+			"Type": "String",
+			"ConstraintDescription": "Provide the bucket name."
+		},
+		"BucketKey": {
+			"Description": "Name of the bucket zip file",
+			"Type": "String",
+			"ConstraintDescription": "Provide the name of the zip file."
 		}
 	},
 	"Resources": {
@@ -23,8 +33,8 @@
 				"Code": {
 					"BranchName": "main",
 					"S3": {
-						"Bucket": "code-commit2",
-						"Key": "code.zip"
+						"Bucket": { "Ref": "BucketName"},
+						"Key": { "Ref": "BucketKey"}
 					}
 
 				}
