@@ -1,0 +1,40 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "A CodeCommit template",
+	"Parameters": {
+		"RepoName": {
+			"Description": "Name of the repo",
+			"Type": "String",
+			"ConstraintDescription": "Provide a name for the repo."
+		},
+		"RepoDescription": {
+			"Description": "A description for the repo",
+			"Type": "String",
+			"ConstraintDescription": "Provide a description for the repo"
+		}
+	},
+	"Resources": {
+		"CodeCommitExample": {
+			"Type" : "AWS::CodeCommit::Repository",
+			"Properties" : {
+				"RepositoryDescription" : {"Ref": "RepoDescription"},
+				"RepositoryName" : {"Ref": "RepoName"
+				},
+				"Code": {
+					"BranchName": "main",
+					"S3": {
+						"Bucket": "code-commit2",
+						"Key": "code.zip"
+					}
+
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"RepoId": {
+			"Description": "Repo Id.",
+			"Value": { "Ref": "CodeCommitExample" }
+		}
+	}
+}
