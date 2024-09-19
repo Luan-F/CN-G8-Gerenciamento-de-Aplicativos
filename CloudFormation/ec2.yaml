@@ -10,10 +10,6 @@ Parameters:
     Description: Nome da instância
     Type: String
     ConstraintDescription: Forneça o nome da instância
-  SecurityGroupName:
-    Description: Nome do grupo de segurança.
-    Type: String
-    ConstraintDescription: Forneça o nome do grupo de segurança.
 
 Resources:
   EC2ExampleInstance:
@@ -30,7 +26,6 @@ Resources:
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
-      GroupName: !Ref SecurityGroupName
       GroupDescription: Enable SSH access via port 22.
       SecurityGroupIngress:
         IpProtocol: tcp
