@@ -3,7 +3,7 @@
 Uma forma de automatizar a criação de uma stack de aplicações.
 
 ## Exemplo 1 - CodeCommit
-Neste exemplo, vamos criar um repositório no **CodeCommit**.
+Neste exemplo, vamos criar um repositório no **CodeCommit** com um template padrão.
 
 ### Etapa 1 - Subindo o template do repositório
 1. Acesse o serviço **S3**
