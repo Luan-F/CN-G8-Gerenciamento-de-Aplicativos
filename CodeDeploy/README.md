@@ -47,7 +47,7 @@ O AWS CodeDeploy é um serviço da Amazon Web Services que automatiza o processo
    - myLambdaFunction:
       Type: AWS::Lambda::Function
       Properties:
-        Name: LambdaCD
+        Name: lambdaCD
         Alias: Beta
         CurrentVersion: 1
         TargetVersion: 2
