@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: A simple template
+
+Parameters:
+  KeyName:
+    Description: Chave SSH.
+    Type: 'AWS::EC2::KeyPair::KeyName'
+    ConstraintDescription: Forneça um par de chaves SSH existente.
+  InstanceName:
+    Description: Nome da instância
+    Type: String
+    ConstraintDescription: Forneça o nome da instância
+  SecurityGroupName:
+    Description: Nome do grupo de segurança.
+    Type: String
+    ConstraintDescription: Forneça o nome do grupo de segurança.
+
+Resources:
+  EC2ExampleInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0e86e20dae9224db8
+      KeyName: !Ref KeyName
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Ref InstanceName
+  InstanceSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupName: !Ref SecurityGroupName
+      GroupDescription: Enable SSH access via port 22.
+      SecurityGroupIngress:
+        IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+
+Outputs:
+  InstanceID:
+    Description: InstanceID
+    Value: !Ref EC2ExampleInstance
+  InstancePublicIP:
+    Description: Instance public IP
+    Value: !GetAtt EC2ExampleInstance.PublicIp
