@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World! This is a simple app for AWS CodePipeline.');
+  res.send('Hello World 2! This is a simple app for AWS CodePipeline.');
 });
 
 app.listen(port, () => {
